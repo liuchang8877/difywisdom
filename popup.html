@@ -2,13 +2,14 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>保存到 Dify 知识库</title>
+  <title>Dify Helper</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      width: 300px;
+      width: 320px;
+      text-align: center;
     }
     .container {
       padding: 16px;
@@ -17,23 +18,27 @@
       align-items: center;
     }
     .logo {
-      width: 64px;
-      height: 64px;
-      margin-bottom: 16px;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 12px;
     }
     h1 {
       font-size: 18px;
-      text-align: center;
-      margin-bottom: 16px;
       font-weight: bold;
       color: #333;
+      margin-bottom: 12px;
     }
-    select {
+    select, textarea {
       width: 100%;
       padding: 8px;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       border: 1px solid #ccc;
       border-radius: 4px;
+      font-size: 14px;
+    }
+    textarea {
+      min-height: 60px;
+      resize: vertical;
     }
     button {
       width: 100%;
@@ -44,6 +49,7 @@
       border-radius: 4px;
       font-size: 16px;
       cursor: pointer;
+      margin-bottom: 8px;
     }
     button:hover {
       background-color: #0056b3;
@@ -58,9 +64,15 @@
       text-decoration: underline;
       font-size: 14px;
       padding: 0;
+      border: none;
+      cursor: pointer;
     }
     .settings button:hover {
       color: #0056b3;
+    }
+    .status {
+      font-size: 14px;
+      color: #333;
     }
   </style>
 </head>
@@ -68,14 +80,24 @@
   <div class="container">
     <img src="icon.png" alt="Logo" class="logo">
     <h1>保存到 Dify 知识库</h1>
+    
     <select id="knowledgeBaseSelect">
       <option value="">请选择知识库</option>
     </select>
-    <button id="savePageButton">保存网页</button>
+    
+    <button id="savePageButton">保存整页内容</button>
+    
+    <textarea id="selectedText" placeholder="选中文字后，这里会自动填充，可编辑后保存"></textarea>
+    
+    <button id="saveSelectionButton">保存选中内容</button>
+    
     <div class="settings">
       <button id="openSettingsButton">设置</button>
     </div>
+
+    <p id="status" class="status"></p>
   </div>
+  
   <script src="popup.js"></script>
 </body>
 </html>
