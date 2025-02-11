@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <title>Dify 设置</title>
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       font-family: Arial, sans-serif;
+    }
+    body {
       margin: 0;
       padding: 0;
       background-color: #f9f9f9;
@@ -16,35 +19,41 @@
     }
     .options-container {
       background: white;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      padding: 20px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 25px;
       width: 100%;
-      max-width: 360px;
+      max-width: 380px;
       box-sizing: border-box;
     }
     h1 {
       font-size: 20px;
-      margin-bottom: 20px;
+      font-weight: bold;
       color: #333;
+      margin-bottom: 20px;
       text-align: center;
     }
     label {
       font-size: 14px;
       display: block;
       text-align: left;
-      margin: 10px 0 5px;
-      color: #555;
+      margin: 12px 0 5px;
+      color: #444;
     }
     input, select {
       width: 100%;
       padding: 10px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       border: 1px solid #ccc;
-      border-radius: 4px;
+      border-radius: 6px;
       font-size: 14px;
       color: #333;
-      box-sizing: border-box;
+      background: #fff;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
     }
     button {
       width: 100%;
@@ -52,37 +61,59 @@
       background-color: #007bff;
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
       font-size: 16px;
       cursor: pointer;
+      transition: background 0.2s ease-in-out;
     }
     button:hover {
       background-color: #0056b3;
     }
-    #status {
+    .status {
       margin-top: 10px;
       font-size: 14px;
-      color: #555;
+      color: green;
       text-align: center;
+    }
+    .shortcut-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    .shortcut-group input {
+      width: 70%;
     }
   </style>
 </head>
 <body>
   <div class="options-container">
     <h1>Dify 设置</h1>
+
     <label for="serverUrl">服务器地址</label>
     <input type="text" id="serverUrl" placeholder="请输入服务器 URL">
 
     <label for="apiKey">API 密钥</label>
-    <input type="text" id="apiKey" placeholder="请输入 API 密钥">
-
+    <input type="password" id="apiKey" placeholder="请输入 API 密钥">
+    
     <label for="defaultDataset">默认知识库</label>
     <select id="defaultDataset">
-      <option value="">请选择知识库</option>
+      <option>加载中...</option>
     </select>
 
+    <h3>快捷键设置</h3>
+    <div class="shortcut-group">
+        <label for="shortcutSavePage">保存整页</label>
+        <input type="text" id="shortcutSavePage" placeholder="如 Ctrl+Shift+S">
+    </div>
+
+    <div class="shortcut-group">
+        <label for="shortcutSaveSelection">保存选中文字</label>
+        <input type="text" id="shortcutSaveSelection" placeholder="如 Ctrl+Shift+X">
+    </div>
+
     <button id="saveSettingsButton">保存设置</button>
-    <p id="status"></p>
+    <p class="status" id="status"></p>
   </div>
   <script src="options.js"></script>
 </body>

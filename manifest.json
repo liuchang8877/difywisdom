@@ -3,36 +3,31 @@
   "name": "Dify Wisdom",
   "version": "1.0.0",
   "description": "一个用于管理和保存知识库的 Chrome 插件。",
-  "permissions": [
-    "storage",
-    "activeTab",
-    "scripting"
-  ],
-  "host_permissions": [
-    "<all_urls>"
-  ],
-  "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "icons/icon-16.png",
-      "48": "icons/icon-48.png",
-      "128": "icons/icon-128.png"
+  "permissions": ["storage", "activeTab", "scripting", "notifications"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "commands": {
+    "save_page": {
+      "suggested_key": { "default": "Ctrl+Shift+S", "mac": "Command+Shift+S" },
+      "description": "保存整个网页到知识库"
+    },
+    "save_selection": {
+      "suggested_key": { "default": "Ctrl+Shift+X", "mac": "Command+Shift+X" },
+      "description": "保存选中的文字到知识库"
     }
   },
-  "background": {
-    "service_worker": "background.js"
-  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": { "default_popup": "popup.html" },
   "options_page": "options.html",
   "icons": {
     "16": "icons/icon-16.png",
     "48": "icons/icon-48.png",
     "128": "icons/icon-128.png"
-  },
-  "content_scripts": [
-  {
-    "matches": ["<all_urls>"],
-    "js": ["content.js"],
-    "run_at": "document_idle"
   }
-]
 }
