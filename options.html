@@ -75,6 +75,8 @@
       color: green;
       text-align: center;
     }
+    /* 快捷键设置部分，目前暂不启用，如需要使用请取消注释 */
+    <!--
     .shortcut-group {
       display: flex;
       align-items: center;
@@ -83,7 +85,9 @@
     }
     .shortcut-group input {
       width: 70%;
+      text-align: center;
     }
+    -->
   </style>
 </head>
 <body>
@@ -101,16 +105,18 @@
       <option>加载中...</option>
     </select>
 
-    <!-- <h3>快捷键设置</h3>
+    <!-- 如需启用快捷键设置，取消下面部分的注释 -->
+    <!--
+    <h3>快捷键设置</h3>
     <div class="shortcut-group">
         <label for="shortcutSavePage">保存整页</label>
-        <input type="text" id="shortcutSavePage" placeholder="如 Ctrl+Shift+S">
+        <input type="text" id="shortcutSavePage" placeholder="如 Ctrl+Shift+S" readonly>
     </div>
-
     <div class="shortcut-group">
         <label for="shortcutSaveSelection">保存选中文字</label>
-        <input type="text" id="shortcutSaveSelection" placeholder="如 Ctrl+Shift+X">
-    </div> -->
+        <input type="text" id="shortcutSaveSelection" placeholder="如 Ctrl+Shift+X" readonly>
+    </div>
+    -->
 
     <button id="saveSettingsButton">保存设置</button>
     <p class="status" id="status"></p>
